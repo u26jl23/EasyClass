@@ -1,0 +1,19 @@
+{
+  "name": "easyclass",
+  "version": "1.0.0",
+  "description": "A simple classroom app",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "cd server && npm install && cd ../client && npm install",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && node index.js",
+    "client": "cd client && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
