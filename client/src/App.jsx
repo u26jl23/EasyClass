@@ -1,9 +1,13 @@
 import React from "react"
+import { Routes, Route } from "react-router-dom"
+import Home from './components/Home'
 
 function App(){
   return (
-    <div>
-      <h1>EasyClass</h1>
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
     </div>
   )
 }
