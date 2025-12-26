@@ -6,8 +6,10 @@ function Teacher(){
     const [sessionId, setSessionId] = React.useState(null)
     const [students, setStudents] = React.useState([])
 
+    // Setting up the listeners
     React.useEffect(()=>{
-        socket.on('session_created', (id)=>{
+        // Listening for messages from server
+        socket.on('session_created', (id)=>{ 
             setSessionId(id)
         })
 
@@ -15,13 +17,15 @@ function Teacher(){
             setStudents(studentList)
         })
 
+        // Turn off the listeners
         return ()=>{
             socket.off('session_created')
             socket.off('update_attendance')
         }
-    }, [])
+    }, []) // Run this code only once when the component first appears on the screen.
 
     const createSession = (type) => {
+        // Sending messages to server
         socket.emit('create_session', {type})
     }
 
