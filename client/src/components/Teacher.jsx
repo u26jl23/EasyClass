@@ -70,15 +70,12 @@ function Teacher(){
                 <div className="active-session">
                     <h3>Class Code: <span className="code">{sessionId}</span></h3>
                     
-                    {/* QR Code is always shown for joining */}
                     <div className="qr-code">
                         <QRCodeSVG value={sessionId} size={200} />
                     </div>
 
-                    {/* End Session Button - Placed exactly where you wanted it */}
                     <button onClick={closeSession} style={{backgroundColor: '#e74c3c', display: 'block', margin: '20px auto'}}>End Session</button>
 
-                    {/* Conditional View based on Type */}
                     {sessionType === 'attendance' ? (
                         <div className="student-list">
                             <h4>Students Joined ({students.length})</h4>
