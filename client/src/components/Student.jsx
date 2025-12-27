@@ -40,14 +40,10 @@ function Student() {
   }
 
   const handleSignIn = () => {
-    if (name) {
-      // Generate a fake ID for now
-      const sId = Math.random().toString(36).substr(2, 9)
-      setStudentId(sId)
-      
+    if (name&&studentId) {   
       socket.emit('sign_in', { 
         sessionId, 
-        studentId: sId, 
+        studentId, 
         name 
       })
       
@@ -62,6 +58,8 @@ function Student() {
   const handleNameChange = (e) => {
     setName(e.target.value)
   }
+
+  const handleStudentIdChange = (e) => setStudentId(e.target.value)
 
   return (
     <div className="student-container">
@@ -87,6 +85,12 @@ function Student() {
             placeholder="Enter Your Name"
             value={name}
             onChange={handleNameChange}
+          />
+          <input 
+            type="text"
+            placeholder='Enter your student ID'
+            value={studentId}
+            onChange={handleStudentIdChange}
           />
           <button onClick={handleSignIn}>Sign In</button>
         </div>

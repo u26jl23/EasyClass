@@ -29,6 +29,12 @@ function Teacher(){
         socket.emit('create_session', {type})
     }
 
+    const closeSession = ()=>{
+        socket.emit('close_session', sessionId)
+        setSessionId(null)
+        setStudents([])
+    }
+
     const handleStartAttendance = function(){
         createSession('attendance')
     }
@@ -51,6 +57,7 @@ function Teacher(){
                     <div className="qr-code">
                         <QRCodeSVG value={sessionId} size={200} />
                     </div>
+                    <button onClick={closeSession} style={{backgroundColor: '#e74c3c', display: 'block', margin: '0 auto'}}>End Session</button>
                     <div className="student-list">
                         <h4>Students Joined ({students.length})</h4>
                         <ul>
